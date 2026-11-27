@@ -2,7 +2,7 @@ import time
 from docplex.cp.model import CpoModel
 
 
-def solve(instance: dict, time_limit: int = 30) -> dict:
+def solve(instance: dict, time_limit: int = 60) -> dict:
     n = instance["num_golfers"]
     p = instance["group_size"]
     w_count = instance["num_weeks"]

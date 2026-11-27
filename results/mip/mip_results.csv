@@ -1,133 +1,133 @@
 instance,g,p,w,num_golfers,solver,status,solve_time
-7-7-8,7,7,8,49,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 68600 vars, 199248 consts, CPLEX code=1016",0.0
+7-7-8,7,7,8,49,cplex_mip,UNKNOWN,64.455
 7-7-8,7,7,8,49,gurobi_mip,LICENSE_LIMIT,0.0
-5-10-5,5,10,5,50,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 31875 vars, 93429 consts, CPLEX code=1016",0.0
+5-10-5,5,10,5,50,cplex_mip,INFEASIBLE,2.4984
 5-10-5,5,10,5,50,gurobi_mip,LICENSE_LIMIT,0.0
-19-10-2,19,10,2,190,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 689510 vars, 2065434 consts, CPLEX code=1016",0.0
+19-10-2,19,10,2,190,cplex_mip,OPTIMAL,64.3912
 19-10-2,19,10,2,190,gurobi_mip,LICENSE_LIMIT,0.0
-6-3-8,6,3,8,18,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 8208 vars, 22402 consts, CPLEX code=1016",0.0
+6-3-8,6,3,8,18,cplex_mip,UNKNOWN,60.6544
 6-3-8,6,3,8,18,gurobi_mip,LICENSE_LIMIT,0.0
-6-7-4,6,7,4,42,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 21672 vars, 63090 consts, CPLEX code=1016",0.0
+6-7-4,6,7,4,42,cplex_mip,INFEASIBLE,1.5536
 6-7-4,6,7,4,42,gurobi_mip,LICENSE_LIMIT,0.0
-6-4-7,6,4,7,24,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 12600 vars, 35292 consts, CPLEX code=1016",0.0
+6-4-7,6,4,7,24,cplex_mip,UNKNOWN,60.7685
 6-4-7,6,4,7,24,gurobi_mip,LICENSE_LIMIT,0.0
-9-3-12,9,3,12,27,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 40824 vars, 114545 consts, CPLEX code=1016",0.0
+9-3-12,9,3,12,27,cplex_mip,UNKNOWN,62.3962
 9-3-12,9,3,12,27,gurobi_mip,LICENSE_LIMIT,0.0
-6-5-5,6,5,5,30,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 13950 vars, 39799 consts, CPLEX code=1016",0.0
+6-5-5,6,5,5,30,cplex_mip,UNKNOWN,60.8718
 6-5-5,6,5,5,30,gurobi_mip,LICENSE_LIMIT,0.0
-4-9-7,4,9,7,36,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 18648 vars, 53872 consts, CPLEX code=1016",0.0
+4-9-7,4,9,7,36,cplex_mip,INFEASIBLE,1.3135
 4-9-7,4,9,7,36,gurobi_mip,LICENSE_LIMIT,0.0
-6-5-6,6,5,6,30,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 16740 vars, 47666 consts, CPLEX code=1016",0.0
+6-5-6,6,5,6,30,cplex_mip,UNKNOWN,61.0625
 6-5-6,6,5,6,30,gurobi_mip,LICENSE_LIMIT,0.0
-5-8-3,5,8,3,40,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 12300 vars, 36057 consts, CPLEX code=1016",0.0
+5-8-3,5,8,3,40,cplex_mip,INFEASIBLE,0.8821
 5-8-3,5,8,3,40,gurobi_mip,LICENSE_LIMIT,0.0
-7-3-10,7,3,10,21,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 16170 vars, 44620 consts, CPLEX code=1016",0.0
+7-3-10,7,3,10,21,cplex_mip,UNKNOWN,61.0635
 7-3-10,7,3,10,21,gurobi_mip,LICENSE_LIMIT,0.0
-7-6-3,7,6,3,42,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 18963 vars, 55295 consts, CPLEX code=1016",0.0
+7-6-3,7,6,3,42,cplex_mip,OPTIMAL,1.4502
 7-6-3,7,6,3,42,gurobi_mip,LICENSE_LIMIT,0.0
-8-4-10,8,4,10,32,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 42240 vars, 119977 consts, CPLEX code=1016",0.0
+8-4-10,8,4,10,32,cplex_mip,UNKNOWN,62.5326
 8-4-10,8,4,10,32,gurobi_mip,LICENSE_LIMIT,0.0
-8-8-9,8,8,9,64,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 149760 vars, 438192 consts, CPLEX code=1016",0.0
+8-8-9,8,8,9,64,cplex_mip,UNKNOWN,69.37
 8-8-9,8,8,9,64,gurobi_mip,LICENSE_LIMIT,0.0
-8-4-8,8,4,8,32,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 33792 vars, 96087 consts, CPLEX code=1016",0.0
+8-4-8,8,4,8,32,cplex_mip,UNKNOWN,62.6036
 8-4-8,8,4,8,32,gurobi_mip,LICENSE_LIMIT,0.0
-9-9-3,9,9,3,81,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 89667 vars, 266033 consts, CPLEX code=1016",0.0
+9-9-3,9,9,3,81,cplex_mip,UNKNOWN,66.2186
 9-9-3,9,9,3,81,gurobi_mip,LICENSE_LIMIT,0.0
-8-4-9,8,4,9,32,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 38016 vars, 108032 consts, CPLEX code=1016",0.0
+8-4-9,8,4,9,32,cplex_mip,UNKNOWN,62.2485
 8-4-9,8,4,9,32,gurobi_mip,LICENSE_LIMIT,0.0
-4-8-7,4,8,7,32,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 14784 vars, 42450 consts, CPLEX code=1016",0.0
+4-8-7,4,8,7,32,cplex_mip,INFEASIBLE,1.1147
 4-8-7,4,8,7,32,gurobi_mip,LICENSE_LIMIT,0.0
-9-4-9,9,4,9,36,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 53946 vars, 154169 consts, CPLEX code=1016",0.0
+9-4-9,9,4,9,36,cplex_mip,UNKNOWN,63.1946
 9-4-9,9,4,9,36,gurobi_mip,LICENSE_LIMIT,0.0
-5-10-4,5,10,4,50,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 25500 vars, 74998 consts, CPLEX code=1016",0.0
+5-10-4,5,10,4,50,cplex_mip,INFEASIBLE,1.8962
 5-10-4,5,10,4,50,gurobi_mip,LICENSE_LIMIT,0.0
-10-3-13,10,3,13,30,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 60450 vars, 170647 consts, CPLEX code=1016",0.0
+10-3-13,10,3,13,30,cplex_mip,UNKNOWN,63.5646
 10-3-13,10,3,13,30,gurobi_mip,LICENSE_LIMIT,0.0
-5-7-5,5,7,5,35,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 15750 vars, 45459 consts, CPLEX code=1016",0.0
+5-7-5,5,7,5,35,cplex_mip,INFEASIBLE,1.106
 5-7-5,5,7,5,35,gurobi_mip,LICENSE_LIMIT,0.0
-10-6-7,10,6,7,60,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 128100 vars, 374026 consts, CPLEX code=1016",0.0
+10-6-7,10,6,7,60,cplex_mip,UNKNOWN,67.8765
 10-6-7,10,6,7,60,gurobi_mip,LICENSE_LIMIT,0.0
-6-6-7,6,6,7,36,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 27972 vars, 80346 consts, CPLEX code=1016",0.0
+6-6-7,6,6,7,36,cplex_mip,UNKNOWN,61.6256
 6-6-7,6,6,7,36,gurobi_mip,LICENSE_LIMIT,0.0
-10-9-3,10,9,3,90,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 122850 vars, 364847 consts, CPLEX code=1016",0.0
+10-9-3,10,9,3,90,cplex_mip,OPTIMAL,10.2294
 10-9-3,10,9,3,90,gurobi_mip,LICENSE_LIMIT,0.0
-6-9-4,6,9,4,54,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 35640 vars, 104760 consts, CPLEX code=1016",0.0
+6-9-4,6,9,4,54,cplex_mip,INFEASIBLE,2.7486
 6-9-4,6,9,4,54,gurobi_mip,LICENSE_LIMIT,0.0
-11-11-12,11,11,12,121,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 974292 vars, 2883936 consts, CPLEX code=1016",0.0
+11-11-12,11,11,12,121,cplex_mip,UNKNOWN,121.5207
 11-11-12,11,11,12,121,gurobi_mip,LICENSE_LIMIT,0.0
-7-7-3,7,7,3,49,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 25725 vars, 75483 consts, CPLEX code=1016",0.0
+7-7-3,7,7,3,49,cplex_mip,OPTIMAL,1.8617
 7-7-3,7,7,3,49,gurobi_mip,LICENSE_LIMIT,0.0
-11-6-2,11,6,2,66,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 48642 vars, 143936 consts, CPLEX code=1016",0.0
+11-6-2,11,6,2,66,cplex_mip,OPTIMAL,3.4752
 11-6-2,11,6,2,66,gurobi_mip,LICENSE_LIMIT,0.0
-8-10-3,8,10,3,80,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 77760 vars, 231026 consts, CPLEX code=1016",0.0
+8-10-3,8,10,3,80,cplex_mip,INFEASIBLE,6.1168
 8-10-3,8,10,3,80,gurobi_mip,LICENSE_LIMIT,0.0
-13-13-14,13,13,14,169,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 2614430 vars, 7767942 consts, CPLEX code=1016",0.0
+13-13-14,13,13,14,169,cplex_mip,UNKNOWN,239.6045
 13-13-14,13,13,14,169,gurobi_mip,LICENSE_LIMIT,0.0
-9-3-11,9,3,11,27,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 37422 vars, 105031 consts, CPLEX code=1016",0.0
+9-3-11,9,3,11,27,cplex_mip,UNKNOWN,62.2306
 9-3-11,9,3,11,27,gurobi_mip,LICENSE_LIMIT,0.0
-13-7-2,13,7,2,91,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 108836 vars, 323805 consts, CPLEX code=1016",0.0
+13-7-2,13,7,2,91,cplex_mip,OPTIMAL,8.1233
 13-7-2,13,7,2,91,gurobi_mip,LICENSE_LIMIT,0.0
-9-9-10,9,9,10,81,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 298890 vars, 879030 consts, CPLEX code=1016",0.0
+9-9-10,9,9,10,81,cplex_mip,UNKNOWN,77.9014
 9-9-10,9,9,10,81,gurobi_mip,LICENSE_LIMIT,0.0
-15-8-2,15,8,2,120,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 217800 vars, 650131 consts, CPLEX code=1016",0.0
+15-8-2,15,8,2,120,cplex_mip,OPTIMAL,18.5971
 15-8-2,15,8,2,120,gurobi_mip,LICENSE_LIMIT,0.0
-17-9-2,17,9,2,153,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 400554 vars, 1198178 consts, CPLEX code=1016",0.0
+17-9-2,17,9,2,153,cplex_mip,OPTIMAL,34.9763
 17-9-2,17,9,2,153,gurobi_mip,LICENSE_LIMIT,0.0
-9-4-10,9,4,10,36,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 59940 vars, 171225 consts, CPLEX code=1016",0.0
+9-4-10,9,4,10,36,cplex_mip,UNKNOWN,63.5585
 9-4-10,9,4,10,36,gurobi_mip,LICENSE_LIMIT,0.0
-8-3-10,8,3,10,24,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 24000 vars, 66869 consts, CPLEX code=1016",0.0
+8-3-10,8,3,10,24,cplex_mip,OPTIMAL,60.4517
 8-3-10,8,3,10,24,gurobi_mip,LICENSE_LIMIT,0.0
-6-6-3,6,6,3,36,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 11988 vars, 34814 consts, CPLEX code=1016",0.0
+6-6-3,6,6,3,36,cplex_mip,OPTIMAL,0.9129
 6-6-3,6,6,3,36,gurobi_mip,LICENSE_LIMIT,0.0
-9-5-2,9,5,2,45,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 18630 vars, 54604 consts, CPLEX code=1016",0.0
+9-5-2,9,5,2,45,cplex_mip,OPTIMAL,1.3169
 9-5-2,9,5,2,45,gurobi_mip,LICENSE_LIMIT,0.0
-9-4-8,9,4,8,36,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 47952 vars, 137113 consts, CPLEX code=1016",0.0
+9-4-8,9,4,8,36,cplex_mip,UNKNOWN,62.9104
 9-4-8,9,4,8,36,gurobi_mip,LICENSE_LIMIT,0.0
-9-4-7,9,4,7,36,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 41958 vars, 120057 consts, CPLEX code=1016",0.0
+9-4-7,9,4,7,36,cplex_mip,UNKNOWN,62.59
 9-4-7,9,4,7,36,gurobi_mip,LICENSE_LIMIT,0.0
-8-4-7,8,4,7,32,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 29568 vars, 84142 consts, CPLEX code=1016",0.0
+8-4-7,8,4,7,32,cplex_mip,OPTIMAL,22.3683
 8-4-7,8,4,7,32,gurobi_mip,LICENSE_LIMIT,0.0
-9-4-6,9,4,6,36,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 35964 vars, 103001 consts, CPLEX code=1016",0.0
+9-4-6,9,4,6,36,cplex_mip,OPTIMAL,2.7064
 9-4-6,9,4,6,36,gurobi_mip,LICENSE_LIMIT,0.0
-8-4-6,8,4,6,32,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 25344 vars, 72197 consts, CPLEX code=1016",0.0
+8-4-6,8,4,6,32,cplex_mip,OPTIMAL,11.2614
 8-4-6,8,4,6,32,gurobi_mip,LICENSE_LIMIT,0.0
-8-4-5,8,4,5,32,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 21120 vars, 60252 consts, CPLEX code=1016",0.0
+8-4-5,8,4,5,32,cplex_mip,OPTIMAL,1.5417
 8-4-5,8,4,5,32,gurobi_mip,LICENSE_LIMIT,0.0
-8-4-4,8,4,4,32,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 16896 vars, 48307 consts, CPLEX code=1016",0.0
+8-4-4,8,4,4,32,cplex_mip,OPTIMAL,1.226
 8-4-4,8,4,4,32,gurobi_mip,LICENSE_LIMIT,0.0
-8-4-3,8,4,3,32,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 12672 vars, 36362 consts, CPLEX code=1016",0.0
+8-4-3,8,4,3,32,cplex_mip,OPTIMAL,0.9089
 8-4-3,8,4,3,32,gurobi_mip,LICENSE_LIMIT,0.0
-5-3-7,5,3,7,15,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 4200 vars, 11291 consts, CPLEX code=1016",0.0
+5-3-7,5,3,7,15,cplex_mip,OPTIMAL,5.207
 5-3-7,5,3,7,15,gurobi_mip,LICENSE_LIMIT,0.0
-8-4-2,8,4,2,32,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 8448 vars, 24417 consts, CPLEX code=1016",0.0
+8-4-2,8,4,2,32,cplex_mip,OPTIMAL,0.5795
 8-4-2,8,4,2,32,gurobi_mip,LICENSE_LIMIT,0.0
-5-5-6,5,5,6,25,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 9750 vars, 27510 consts, CPLEX code=1016",0.0
+5-5-6,5,5,6,25,cplex_mip,OPTIMAL,0.9513
 5-5-6,5,5,6,25,gurobi_mip,LICENSE_LIMIT,0.0
-7-4-2,7,4,2,28,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 5684 vars, 16353 consts, CPLEX code=1016",0.0
+7-4-2,7,4,2,28,cplex_mip,OPTIMAL,0.3789
 7-4-2,7,4,2,28,gurobi_mip,LICENSE_LIMIT,0.0
-5-3-6,5,3,6,15,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 3600 vars, 9695 consts, CPLEX code=1016",0.0
+5-3-6,5,3,6,15,cplex_mip,OPTIMAL,7.5561
 5-3-6,5,3,6,15,gurobi_mip,LICENSE_LIMIT,0.0
-5-4-4,5,4,4,20,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 4200 vars, 11713 consts, CPLEX code=1016",0.0
+5-4-4,5,4,4,20,cplex_mip,OPTIMAL,0.9832
 5-4-4,5,4,4,20,gurobi_mip,LICENSE_LIMIT,0.0
-5-3-5,5,3,5,15,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 3000 vars, 8099 consts, CPLEX code=1016",0.0
+5-3-5,5,3,5,15,cplex_mip,OPTIMAL,0.2798
 5-3-5,5,3,5,15,gurobi_mip,LICENSE_LIMIT,0.0
-5-3-4,5,3,4,15,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 2400 vars, 6503 consts, CPLEX code=1016",0.0
+5-3-4,5,3,4,15,cplex_mip,OPTIMAL,0.1819
 5-3-4,5,3,4,15,gurobi_mip,LICENSE_LIMIT,0.0
-5-3-3,5,3,3,15,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 1800 vars, 4907 consts, CPLEX code=1016",0.0
+5-3-3,5,3,3,15,cplex_mip,OPTIMAL,0.1328
 5-3-3,5,3,3,15,gurobi_mip,LICENSE_LIMIT,0.0
-5-3-2,5,3,2,15,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 1200 vars, 3311 consts, CPLEX code=1016",0.0
+5-3-2,5,3,2,15,cplex_mip,OPTIMAL,0.0908
 5-3-2,5,3,2,15,gurobi_mip,LICENSE_LIMIT,0.0
-4-3-3,4,3,3,12,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 936 vars, 2504 consts, CPLEX code=1016",0.0
+4-3-3,4,3,3,12,cplex_mip,OPTIMAL,0.0987
 4-3-3,4,3,3,12,gurobi_mip,LICENSE_LIMIT,0.0
-3-2-2,3,2,2,6,cplex_mip,OPTIMAL,0.0338
-3-2-2,3,2,2,6,gurobi_mip,OPTIMAL,0.0111
-3-9-6,3,9,6,27,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 6804 vars, 19517 consts, CPLEX code=1016",0.0
+3-2-2,3,2,2,6,cplex_mip,OPTIMAL,0.0174
+3-2-2,3,2,2,6,gurobi_mip,OPTIMAL,0.0138
+3-9-6,3,9,6,27,cplex_mip,INFEASIBLE,0.6408
 3-9-6,3,9,6,27,gurobi_mip,LICENSE_LIMIT,0.0
-3-8-5,3,8,5,24,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 4500 vars, 12859 consts, CPLEX code=1016",0.0
+3-8-5,3,8,5,24,cplex_mip,INFEASIBLE,0.3231
 3-8-5,3,8,5,24,gurobi_mip,LICENSE_LIMIT,0.0
-3-9-5,3,9,5,27,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 5670 vars, 16327 consts, CPLEX code=1016",0.0
+3-9-5,3,9,5,27,cplex_mip,INFEASIBLE,0.3759
 3-9-5,3,9,5,27,gurobi_mip,LICENSE_LIMIT,0.0
-4-7-6,4,7,6,28,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 9744 vars, 27819 consts, CPLEX code=1016",0.0
+4-7-6,4,7,6,28,cplex_mip,INFEASIBLE,0.7192
 4-7-6,4,7,6,28,gurobi_mip,LICENSE_LIMIT,0.0
-3-6-6,3,6,6,18,cplex_mip,"ERROR: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 3078 vars, 8564 consts, CPLEX code=1016",0.0
+3-6-6,3,6,6,18,cplex_mip,INFEASIBLE,0.2201
 3-6-6,3,6,6,18,gurobi_mip,LICENSE_LIMIT,0.0
