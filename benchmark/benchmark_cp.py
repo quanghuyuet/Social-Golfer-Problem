@@ -11,7 +11,7 @@ from solvers.cp import cp_sat, cplex_cp
 
 DATA_PATH = PROJECT_ROOT / "dataset" / "data.txt"
 RESULTS_PATH = PROJECT_ROOT / "results" / "cp" / "cp_results.csv"
-TIME_LIMIT = 30  # Thời gian giới hạn mỗi bộ dữ liệu (giây)
+TIME_LIMIT = 60  # Thời gian giới hạn mỗi bộ dữ liệu (giây)
 
 
 def load_instances(filepath: Path) -> list[dict]:
