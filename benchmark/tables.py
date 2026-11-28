@@ -21,7 +21,7 @@ def plot_cactus(
     csv_path: Path,
     output_filename: str,
     title: str,
-    combine_c2_encoding: bool = False,
+    encoding_col: str | None = None,
     log_scale: bool = False,
 ) -> None:
     """Đọc file CSV, dựng biểu đồ Cactus Plot và lưu cùng thư mục với file CSV."""
@@ -32,12 +32,12 @@ def plot_cactus(
     df = pd.read_csv(csv_path)
     df["clean_status"] = df["status"].apply(normalize_status)
 
-    # Nếu là file SAT (encoding_results.csv), ghép thêm c2_encoding để phân biệt các bộ mã hóa
-    if combine_c2_encoding and "c2_encoding" in df.columns:
+    # Nếu chỉ định cột kỹ thuật mã hóa (ví dụ 'c2_encoding' hoặc 'c1_encoding'), ghép vào tên solver
+    if encoding_col and encoding_col in df.columns:
         df["solver_label"] = (
             df["solver"].astype(str).str.strip()
             + " ("
-            + df["c2_encoding"].astype(str).str.strip()
+            + df[encoding_col].astype(str).str.strip()
             + ")"
         )
     else:
@@ -55,12 +55,12 @@ def plot_cactus(
     for idx, solver in enumerate(solvers):
         times = (
             solved_df[solved_df["solver_label"] == solver]["solve_time"]
+            .dropna()
             .astype(float)
             .sort_values()
             .tolist()
         )
         if not times:
-            # Nếu solver không giải được bộ nào (0 instance), vẽ điểm tại gốc hoặc ghi chú trong legend
             plt.plot(
                 [],
                 [],
@@ -111,7 +111,7 @@ def main():
         csv_path=PROJECT_ROOT / "results" / "cp" / "cp_results.csv",
         output_filename="cp_cactus_plot.png",
         title="Cactus Plot - So sánh các bộ giải Constraint Programming (CP)",
-        combine_c2_encoding=False,
+        encoding_col=None,
         log_scale=False,
     )
 
@@ -120,26 +120,35 @@ def main():
         csv_path=PROJECT_ROOT / "results" / "mip" / "mip_results.csv",
         output_filename="mip_cactus_plot.png",
         title="Cactus Plot - So sánh các bộ giải Mixed-Integer Programming (MIP)",
-        combine_c2_encoding=False,
+        encoding_col=None,
         log_scale=False,
     )
 
-    # 3. SAT Cactus Plot -> lưu tại results/sat/sat_cactus_plot.png
+    # 3. SAT Cactus Plot (C2 Exactly-K) -> lưu tại results/sat/sat_cactus_plot.png
     plot_cactus(
         csv_path=PROJECT_ROOT / "results" / "sat" / "encoding_results.csv",
         output_filename="sat_cactus_plot.png",
-        title="Cactus Plot - So sánh các kỹ thuật mã hóa SAT (Kissat)",
-        combine_c2_encoding=True,
+        title="Cactus Plot - So sánh các kỹ thuật mã hóa C2 Exactly-K (Kissat)",
+        encoding_col="c2_encoding",
         log_scale=False,
     )
 
-    # 4. Final Cactus Plot -> lưu tại results/final_cactus_plot.png
+    # 4. SAT Cactus Plot (C1 AMO) -> lưu tại results/sat/cactus_plot_c1_amo.png
+    plot_cactus(
+        csv_path=PROJECT_ROOT / "results" / "sat" / "c1_amo_results.csv",
+        output_filename="cactus_plot_c1_amo.png",
+        title="Cactus Plot - So sánh các kỹ thuật mã hóa C1 At-Most-One (Kissat)",
+        encoding_col="c1_encoding",
+        log_scale=False,
+    )
+
+    # 5. Final Cactus Plot -> lưu tại results/final_cactus_plot.png
     plot_cactus(
         csv_path=PROJECT_ROOT / "results" / "final_comparison.csv",
         output_filename="final_cactus_plot.png",
         title="Cactus Plot - So sánh tổng hợp các bộ giải SAT, CP và MIP",
-        combine_c2_encoding=False,
-        log_scale=True,  # Dùng thang log để quan sát rõ cả nhóm giải nhanh (<0.5s) và nhóm chạy tới 30s
+        encoding_col=None,
+        log_scale=True,
     )
 
 
