@@ -10,7 +10,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATASET_PATH = PROJECT_ROOT / "dataset" / "data.txt"
 DEFAULT_SAT_RESULTS_PATH = PROJECT_ROOT / "results" / "sat" / "encoding_results.csv"
 
-# Paper experimental time limit: 900 seconds (15 minutes)
+# Standardized benchmark time limit: 60 seconds (synchronized with CP/MIP)
+DEFAULT_TIMEOUT_SECONDS = 60.0
 PAPER_TIMEOUT_SECONDS = 900.0
 
 # Representative 15 instances from dataset/data.txt for Axis 2 (C1 AMO comparison)

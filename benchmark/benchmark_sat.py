@@ -29,8 +29,8 @@ from benchmark.common import (
     AXIS2_REPRESENTATIVE_INSTANCES,
     DEFAULT_DATASET_PATH,
     DEFAULT_SAT_RESULTS_PATH,
+    DEFAULT_TIMEOUT_SECONDS,
     INTERACTION_CHECK_INSTANCES,
-    PAPER_TIMEOUT_SECONDS,
     SGPInstance,
     load_instances,
 )
@@ -112,7 +112,7 @@ def run_benchmark(
     experiment: str = "c2",
     dataset_path: Path = DEFAULT_DATASET_PATH,
     output_csv: Path = DEFAULT_SAT_RESULTS_PATH,
-    timeout: float = PAPER_TIMEOUT_SECONDS,
+    timeout: float = DEFAULT_TIMEOUT_SECONDS,
     max_bino_clauses: int = DEFAULT_MAX_BINO_CLAUSES,
     sort_by_size: bool = True,
     overwrite: bool = False,
@@ -137,15 +137,27 @@ def run_benchmark(
     skipped = 0
 
     if verbose:
+        already_done = sum(
+            1
+            for (exp_name, inst, c2, c1, solver_name) in tasks
+            if logger.is_completed(exp_name, inst.name, c2, c1, solver_name)
+        )
         print(
             f"=== SAT Benchmark [{experiment}] | tasks={total_tasks} | "
-            f"timeout={timeout}s | output={output_csv} ==="
+            f"resumed={already_done} | remaining={total_tasks - already_done} | "
+            f"timeout={timeout}s | output={output_csv} ===",
+            flush=True,
         )
 
     for idx, (exp_name, inst, c2, c1, solver_name) in enumerate(tasks, start=1):
         if logger.is_completed(exp_name, inst.name, c2, c1, solver_name):
             skipped += 1
             continue
+
+        prefix = (
+            f"[{idx:3d}/{total_tasks}] {exp_name:12s} | {inst.name:8s} | "
+            f"C2={c2:8s} C1={c1:10s} | {solver_name:8s}"
+        )
 
         # Pre-check Binomial clause explosion to avoid RAM exhaustion
         if c2 == "binomial":
@@ -174,11 +186,13 @@ def run_benchmark(
                 executed += 1
                 if verbose:
                     print(
-                        f"[{idx:3d}/{total_tasks}] {exp_name:12s} | {inst.name:8s} | "
-                        f"C2={c2:8s} C1={c1:10s} | {solver_name:8s} -> MEMOUT "
-                        f"(est clauses={est_clauses:.2e})"
+                        f"{prefix} -> MEMOUT (est clauses={est_clauses:.2e})",
+                        flush=True,
                     )
                 continue
+
+        if verbose:
+            print(f"{prefix} ... ", end="", flush=True)
 
         try:
             res = solve_sgp(
@@ -222,10 +236,8 @@ def run_benchmark(
                     else (" [INVALID!]" if res.is_valid is False else "")
                 )
                 print(
-                    f"[{idx:3d}/{total_tasks}] {exp_name:12s} | {inst.name:8s} | "
-                    f"C2={c2:8s} C1={c1:10s} | {solver_name:8s} -> {res.status:7s} "
-                    f"solve={res.solve_time:7.3f}s vars={res.num_vars:,} "
-                    f"cls={res.num_clauses:,}{valid_tag}",
+                    f"-> {res.status:7s} solve={res.solve_time:7.3f}s "
+                    f"vars={res.num_vars:,} cls={res.num_clauses:,}{valid_tag}",
                     flush=True,
                 )
         except MemoryError:
@@ -251,11 +263,7 @@ def run_benchmark(
             )
             executed += 1
             if verbose:
-                print(
-                    f"[{idx:3d}/{total_tasks}] {exp_name:12s} | {inst.name:8s} | "
-                    f"C2={c2:8s} C1={c1:10s} | {solver_name:8s} -> MEMOUT (MemoryError)",
-                    flush=True,
-                )
+                print("-> MEMOUT (MemoryError)", flush=True)
 
     if verbose:
         print(f"=== Done: executed={executed}, skipped(resumed)={skipped}, total={total_tasks} ===")
@@ -285,8 +293,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--timeout",
         type=float,
-        default=PAPER_TIMEOUT_SECONDS,
-        help="Time limit per instance in seconds. Default: 900.0 (matching paper)",
+        default=DEFAULT_TIMEOUT_SECONDS,
+        help="Time limit per instance in seconds. Default: 60.0",
     )
     parser.add_argument(
         "--max-bino-clauses",
