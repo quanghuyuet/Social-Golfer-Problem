@@ -5,7 +5,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # Đường dẫn tới các file đầu vào và đầu ra
-SAT_RESULTS_PATH = PROJECT_ROOT / "results" / "sat" / "encoding_results.csv"
+SAT_RESULTS_PATH = PROJECT_ROOT / "results" / "sat" / "sat_nsc_seqcounter_results.csv"
 MIP_RESULTS_PATH = PROJECT_ROOT / "results" / "mip" / "mip_results.csv"
 CP_RESULTS_PATH = PROJECT_ROOT / "results" / "cp" / "cp_results.csv"
 OUTPUT_PATH = PROJECT_ROOT / "results" / "final_comparison.csv"
