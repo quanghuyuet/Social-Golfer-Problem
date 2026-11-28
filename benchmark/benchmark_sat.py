@@ -83,9 +83,11 @@ def build_task_list(
     base_instances = all_instances[:limit] if limit is not None else all_instances
 
     if experiment in ("c2", "all"):
+        c2_amo_list = c1_filter if (experiment == "c2" and c1_filter) else ["pairwise"]
         for inst in base_instances:
             for c2 in c2_list:
-                tasks.append(("c2_exactly_k", inst, c2, "pairwise", "kissat"))
+                for c1 in c2_amo_list:
+                    tasks.append(("c2_exactly_k", inst, c2, c1, "kissat"))
 
     if experiment in ("c1", "all"):
         rep_instances = _subset_by_names(AXIS2_REPRESENTATIVE_INSTANCES)
