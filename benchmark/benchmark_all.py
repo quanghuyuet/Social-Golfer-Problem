@@ -32,9 +32,13 @@ def read_and_extract(filepath: Path, is_sat: bool = False) -> list[dict]:
     with open(filepath, "r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
+            # Bỏ qua các dòng trống hoàn toàn nếu có
+            if not row.get("instance") or not row.get("g"):
+                continue
+
             solver_name = row["solver"].strip()
 
-            # Với file SAT, gắn thêm tên bộ mã hóa (c2_encoding) để phân biệt các biến thể kissat
+            # Với file SAT, gắn thêm tên bộ mã hóa (c2_encoding) để phân biệt các biến thể
             if is_sat and row.get("c2_encoding"):
                 c2_enc = row["c2_encoding"].strip()
                 solver_name = f"{solver_name} ({c2_enc})"
@@ -43,6 +47,15 @@ def read_and_extract(filepath: Path, is_sat: bool = False) -> list[dict]:
             p_val = int(row["p"])
             w_val = int(row["w"])
 
+            # Xử lý an toàn khi cột solve_time bị rỗng ('') hoặc None
+            raw_time = (row.get("solve_time") or "").strip()
+            if raw_time == "":
+                # Nếu là file SAT bị timeout và có cột timeout/total_time thì lấy dự phòng, ngược lại gán 0.0
+                fallback_time = (row.get("total_time") or row.get("timeout") or "0.0").strip()
+                solve_time_val = float(fallback_time) if fallback_time else 0.0
+            else:
+                solve_time_val = float(raw_time)
+
             rows.append(
                 {
                     "instance": row["instance"].strip(),
@@ -50,8 +63,8 @@ def read_and_extract(filepath: Path, is_sat: bool = False) -> list[dict]:
                     "p": p_val,
                     "w": w_val,
                     "solver": solver_name,
-                    "status": normalize_status(row["status"]),
-                    "solve_time": float(row["solve_time"]),
+                    "status": normalize_status(row.get("status", "UNKNOWN")),
+                    "solve_time": solve_time_val,
                 }
             )
     return rows
