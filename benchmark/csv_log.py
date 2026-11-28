@@ -3,9 +3,8 @@ Crash-safe CSV logger with automatic resume support for long-running benchmarks.
 """
 
 import csv
-from datetime import datetime
 from pathlib import Path
-from typing import Dict, Iterable, List, Set, Tuple
+from typing import Dict, List, Set, Tuple
 
 SAT_CSV_COLUMNS: List[str] = [
     "experiment",
@@ -24,7 +23,6 @@ SAT_CSV_COLUMNS: List[str] = [
     "num_vars",
     "num_clauses",
     "is_valid",
-    "timestamp",
 ]
 
 SATRunKey = Tuple[str, str, str, str, str]  # (experiment, instance, c2, c1, solver)
@@ -74,8 +72,6 @@ class SATCSVLogger:
     def log(self, row: Dict[str, object]) -> None:
         """Append one result row and flush immediately to disk."""
         full_row = {col: row.get(col, "") for col in SAT_CSV_COLUMNS}
-        if not full_row["timestamp"]:
-            full_row["timestamp"] = datetime.now().isoformat(timespec="seconds")
 
         with self.csv_path.open("a", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=SAT_CSV_COLUMNS)

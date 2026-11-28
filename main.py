@@ -44,8 +44,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--timeout",
         type=float,
-        default=300.0,
-        help="Solver time limit in seconds. Default: 300.0",
+        default=60.0,
+        help="Solver time limit in seconds. Default: 60.0",
     )
     parser.add_argument(
         "--no-sb1",

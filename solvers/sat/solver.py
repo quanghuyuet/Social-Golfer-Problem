@@ -72,8 +72,31 @@ class KissatSolver:
     def __init__(self, binary_path: Optional[str] = None) -> None:
         self.binary_path = find_kissat_binary(binary_path)
 
+    def solve_file(
+        self, cnf_path: str, timeout: Optional[float] = 60.0
+    ) -> Tuple[str, Optional[List[int]], float]:
+        """Solve an existing DIMACS CNF file using Kissat."""
+        cmd = [self.binary_path, cnf_path]
+        if timeout is not None:
+            cmd.insert(1, f"--time={max(1, int(timeout))}")
+
+        t0 = time.perf_counter()
+        try:
+            proc = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=(timeout + 5.0) if timeout is not None else None,
+            )
+        except subprocess.TimeoutExpired:
+            wall_time = time.perf_counter() - t0
+            return "TIMEOUT", None, wall_time
+
+        wall_time = time.perf_counter() - t0
+        return self._parse_output(proc.stdout, proc.returncode, wall_time)
+
     def solve(
-        self, cnf: CNF, timeout: Optional[float] = 900.0
+        self, cnf: CNF, timeout: Optional[float] = 60.0
     ) -> Tuple[str, Optional[List[int]], float]:
         """
         Solve a PySAT CNF object using Kissat.
@@ -86,26 +109,7 @@ class KissatSolver:
         os.close(tmp_fd)
         try:
             cnf.to_file(cnf_path)
-            cmd = [self.binary_path, cnf_path]
-            if timeout is not None:
-                # Pass Kissat's internal --time limit as integer ceiling,
-                # and also enforce a slightly larger subprocess timeout as safety net.
-                cmd.insert(1, f"--time={max(1, int(timeout))}")
-
-            t0 = time.perf_counter()
-            try:
-                proc = subprocess.run(
-                    cmd,
-                    capture_output=True,
-                    text=True,
-                    timeout=(timeout + 5.0) if timeout is not None else None,
-                )
-            except subprocess.TimeoutExpired:
-                wall_time = time.perf_counter() - t0
-                return "TIMEOUT", None, wall_time
-
-            wall_time = time.perf_counter() - t0
-            return self._parse_output(proc.stdout, proc.returncode, wall_time)
+            return self.solve_file(cnf_path, timeout=timeout)
         finally:
             if os.path.exists(cnf_path):
                 try:
@@ -163,7 +167,7 @@ class PySATSolver:
         self.name = name
 
     def solve(
-        self, cnf: CNF, timeout: Optional[float] = 900.0
+        self, cnf: CNF, timeout: Optional[float] = 60.0
     ) -> Tuple[str, Optional[List[int]], float]:
         """Solve a CNF using a PySAT backend solver with interrupt-based timeout."""
         t0 = time.perf_counter()
@@ -186,6 +190,47 @@ class PySATSolver:
             return "TIMEOUT", None, elapsed
 
 
+    def solve_model(
+        self, sgp_model: SGPModel, timeout: Optional[float] = 60.0
+    ) -> Tuple[str, Optional[List[int]], float, int, int]:
+        """
+        Stream clauses from SGPModel directly into the PySAT solver without
+        materializing the full C3 clause list in Python memory.
+        Returns (status, model, solve_time, num_vars, num_clauses).
+        """
+        t_enc = time.perf_counter()
+        g_var = sgp_model._build_g_var()
+        non_c3, top_id = sgp_model._build_non_c3_clauses(g_var)
+        sgp_model.top_id = top_id
+        num_clauses = len(non_c3)
+
+        with PySATBackend(name=self.name, bootstrap_with=non_c3) as solver:
+            del non_c3
+            for cl in sgp_model._iter_c3_clauses(g_var):
+                solver.add_clause(cl)
+                num_clauses += 1
+            sgp_model.num_clauses = num_clauses
+            sgp_model.encode_time = time.perf_counter() - t_enc
+
+            t0 = time.perf_counter()
+            timer: Optional[threading.Timer] = None
+            if timeout is not None:
+                timer = threading.Timer(timeout, solver.interrupt)
+                timer.start()
+            try:
+                res = solver.solve_limited(expect_interrupt=True)
+            finally:
+                if timer is not None:
+                    timer.cancel()
+
+            elapsed = time.perf_counter() - t0
+            if res is True:
+                return "SAT", solver.get_model(), elapsed, top_id, num_clauses
+            if res is False:
+                return "UNSAT", None, elapsed, top_id, num_clauses
+            return "TIMEOUT", None, elapsed, top_id, num_clauses
+
+
 def solve_sgp(
     g: int,
     p: int,
@@ -193,14 +238,16 @@ def solve_sgp(
     group_size_encoding: str = "nsc",
     amo_encoding: str = "pairwise",
     solver_name: str = "kissat",
-    timeout: Optional[float] = 900.0,
+    timeout: Optional[float] = 60.0,
     use_sb1: bool = True,
     use_sb2: bool = True,
+    use_sb_pp: bool = False,
     verify: bool = True,
     kissat_path: Optional[str] = None,
 ) -> SolveResult:
     """
     Build the SAT model for SGP (g, p, w), solve it, decode and verify the schedule.
+    Uses low-memory streaming CNF generation to avoid RAM exhaustion on large instances.
     """
     sgp_model = SGPModel(
         g=g,
@@ -210,15 +257,27 @@ def solve_sgp(
         amo_encoding=amo_encoding,
         use_sb1=use_sb1,
         use_sb2=use_sb2,
+        use_sb_pp=use_sb_pp,
     )
-    cnf = sgp_model.build()
 
     if solver_name.lower() == "kissat":
         solver = KissatSolver(binary_path=kissat_path)
+        tmp_fd, cnf_path = tempfile.mkstemp(suffix=".cnf", prefix="sgp_")
+        os.close(tmp_fd)
+        try:
+            num_vars, num_clauses = sgp_model.write_dimacs(cnf_path)
+            status, model, solve_time = solver.solve_file(cnf_path, timeout=timeout)
+        finally:
+            if os.path.exists(cnf_path):
+                try:
+                    os.remove(cnf_path)
+                except OSError:
+                    pass
     else:
         solver = PySATSolver(name=solver_name)
-
-    status, model, solve_time = solver.solve(cnf, timeout=timeout)
+        status, model, solve_time, num_vars, num_clauses = solver.solve_model(
+            sgp_model, timeout=timeout
+        )
 
     schedule = None
     is_valid = None
@@ -239,8 +298,8 @@ def solve_sgp(
         status=status,
         solve_time=solve_time,
         encode_time=sgp_model.encode_time,
-        num_vars=cnf.nv,
-        num_clauses=len(cnf.clauses),
+        num_vars=num_vars,
+        num_clauses=num_clauses,
         solver_name=solver_name,
         group_size_encoding=group_size_encoding,
         amo_encoding=amo_encoding,
