@@ -13,7 +13,7 @@ from solvers.mip import cplex_mip, gurobi
 # Định nghĩa các đường dẫn tương đối từ thư mục gốc dự án
 DATA_PATH = PROJECT_ROOT / "dataset" / "data.txt"
 RESULTS_PATH = PROJECT_ROOT / "results" / "mip" / "mip_results.csv"
-TIME_LIMIT = 30  # Thời gian giới hạn mỗi bộ dữ liệu (giây)
+TIME_LIMIT = 60  # Thời gian giới hạn mỗi bộ dữ liệu (giây)
 
 
 def load_instances(filepath: Path) -> list[dict]:

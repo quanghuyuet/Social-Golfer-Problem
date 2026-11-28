@@ -2,7 +2,7 @@ import time
 from ortools.sat.python import cp_model
 
 
-def solve(instance: dict, time_limit: int = 30) -> dict:
+def solve(instance: dict, time_limit: int = 60) -> dict:
     num_golfers = instance["num_golfers"]
     group_size = instance["group_size"]
     num_weeks = instance["num_weeks"]
